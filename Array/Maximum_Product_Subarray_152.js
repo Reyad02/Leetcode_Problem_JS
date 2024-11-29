@@ -39,3 +39,4 @@ var maxProduct = function (nums) {
 
 const result = maxProduct([-2, 0, -1]);
 console.log(result);
+
