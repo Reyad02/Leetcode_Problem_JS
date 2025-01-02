@@ -58,6 +58,62 @@ class SinglyLinkedList {
     }
   }
 
+  // delete from beginning
+  deleteAtFirst() {
+    if (this.head === null) {
+      console.log("Linked list empty");
+      return null;
+    }
+    this.head = this.head.next;
+    this.size--;
+  }
+
+  // delete at last
+  deleteAtLast() {
+    if (this.head === null) {
+      console.log("Linked list empty");
+      return null;
+    }
+    if (this.head.next === null) {
+      this.head = null;
+      this.size = 0;
+      return null;
+    }
+    let current = this.head;
+    let prev = null;
+    while (current.next) {
+      prev = current;
+      current = current.next;
+    }
+    prev.next = null;
+    this.size--;
+  }
+
+  //   delete in a given position
+  deleteBetween(position) {
+    if (this.head === null) {
+      return null;
+    }
+    if (position < 0 || position >= this.size) {
+      return "Position invalid";
+    }
+
+    if (position === 0) {
+      this.head = this.head.next;
+    } else {
+      let current = this.head;
+      let previous = null;
+      let index = 0;
+      while (index < position) {
+        previous = current;
+        current = current.next;
+        index++;
+      }
+      previous.next = current.next;
+    }
+    this.size--;
+  }
+
   printLinkedList() {
     if (this.head === null) {
       return "Empty Linked List";
@@ -74,6 +130,10 @@ class SinglyLinkedList {
 
 const list = new SinglyLinkedList();
 list.insertBeginning(10);
-list.insertEnd(20);
-list.insertBetween(30, 2);
+list.insertEnd(30);
+list.insertBetween(20, 1);
+console.log(list.printLinkedList());
+list.deleteAtFirst();
+list.deleteAtLast();
+list.deleteBetween(1);
 console.log(list.printLinkedList());
