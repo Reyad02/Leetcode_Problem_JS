@@ -126,14 +126,36 @@ class SinglyLinkedList {
     }
     return result.join(" -> ");
   }
+
+  getSize() {
+    return this.size;
+  }
+
+//   searching in linked list 
+  searchInList(target) {
+    if (this.head === null) {
+      console.log("Linked list empty");
+      return null;
+    }
+    let current = this.head;
+    while (current) {
+      if (current.value === target) {
+        return true;
+      }
+      current = current.next;
+    }
+    return false;
+  }
 }
 
 const list = new SinglyLinkedList();
 list.insertBeginning(10);
 list.insertEnd(30);
 list.insertBetween(20, 1);
-console.log(list.printLinkedList());
-list.deleteAtFirst();
-list.deleteAtLast();
-list.deleteBetween(1);
-console.log(list.printLinkedList());
+// console.log(list.printLinkedList());
+// list.deleteAtFirst();
+// list.deleteAtLast();
+// list.deleteBetween(1);
+// console.log(list.printLinkedList());
+// console.log("Size:", list.getSize());
+console.log(list.searchInList(30));
