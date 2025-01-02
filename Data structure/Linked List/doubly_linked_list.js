@@ -144,6 +144,26 @@ class DoublyLinkedList {
     this.size--;
   }
 
+  getSize() {
+    return this.size;
+  }
+
+  //   searching in linked list
+  searchInList(target) {
+    if (this.head === null) {
+      console.log("Linked list empty");
+      return null;
+    }
+    let current = this.head;
+    while (current) {
+      if (current.value === target) {
+        return true;
+      }
+      current = current.next;
+    }
+    return false;
+  }
+
   printLinkedList() {
     if (this.head === null) {
       console.log("This list is empty");
@@ -166,5 +186,7 @@ list.insertBetween(20, 1);
 list.insertBetween(30, 2);
 // list.deleteAtFirst()
 // list.deleteAtEnd()
-list.deleteBetween(2)
-list.printLinkedList();
+// list.deleteBetween(2);
+// list.printLinkedList();
+
+console.log(list.searchInList(0))
