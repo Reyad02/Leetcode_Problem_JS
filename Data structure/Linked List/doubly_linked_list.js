@@ -74,6 +74,76 @@ class DoublyLinkedList {
     }
   }
 
+  // delete from beginning
+  deleteAtFirst() {
+    if (this.head === null) {
+      console.log("Linked list empty");
+      return null;
+    }
+    if (this.head.next === null) {
+      this.head = this.tail = null;
+    } else {
+      let newHead = this.head.next;
+      newHead.prev = null;
+      this.head.next = null;
+      this.head = newHead;
+    }
+    this.size--;
+  }
+
+  // delete from end
+  deleteAtEnd() {
+    if (this.head === null) {
+      console.log("Linked list empty");
+      return null;
+    }
+    if (this.head.next === null) {
+      this.head = this.tail = null;
+    } else {
+      let newTail = this.tail.prev;
+      newTail.next = null;
+      this.tail.prev = null;
+      this.tail = newTail;
+    }
+    this.size--;
+  }
+
+  // delete a position
+  deleteBetween(position) {
+    if (this.head === null) {
+      return null;
+    }
+    if (position < 0 || position >= this.size) {
+      return "Position invalid";
+    }
+
+    if (position === 0) {
+      if (this.head.next) {
+        this.head = this.head.next;
+        this.head.prev = null;
+      } else {
+        this.head = this.tail = null;
+      }
+    } else {
+      let current = this.head;
+      let previous = null;
+      let index = 0;
+      while (index < position) {
+        previous = current;
+        current = current.next;
+        index++;
+      }
+      if (current.next) {
+        previous.next = current.next;
+        current.next.prev = previous;
+      } else {
+        previous.next = null;
+        this.tail = previous;
+      }
+    }
+    this.size--;
+  }
+
   printLinkedList() {
     if (this.head === null) {
       console.log("This list is empty");
@@ -91,8 +161,10 @@ class DoublyLinkedList {
 
 const list = new DoublyLinkedList();
 list.insertBeginning(10);
-// list.insertEnd(40);
-// list.insertBetween(1,20);
-// list.insertEnd(30);
+list.insertEnd(40);
 list.insertBetween(20, 1);
+list.insertBetween(30, 2);
+// list.deleteAtFirst()
+// list.deleteAtEnd()
+list.deleteBetween(2)
 list.printLinkedList();
