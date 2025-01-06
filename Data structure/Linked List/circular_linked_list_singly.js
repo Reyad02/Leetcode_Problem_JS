@@ -74,12 +74,78 @@ class CircularLinkedList {
         currentNode = currentNode.next;
         i++;
       }
-      console.log(currentNode.value);
-      prevNode.next=newNode;
+      prevNode.next = newNode;
       newNode.next = currentNode;
-
     }
     this.size++;
+  }
+
+  // delete at the first
+  deleteNodeAtBeginning() {
+    if (this.size === 0) {
+      return "Empty";
+    }
+    if (this.size === 1) {
+      this.head = null;
+    } else {
+      let currentNode = this.head;
+      while (currentNode.next !== this.head) {
+        currentNode = currentNode.next;
+      }
+      currentNode.next = this.head.next;
+      this.head = this.head.next;
+    }
+    this.size--;
+  }
+
+  // delete at the last node
+  deleteNodeAtLast() {
+    if (this.size === 0) {
+      return "Empty";
+    }
+    if (this.size === 1) {
+      this.head = null;
+    } else {
+      let currentNode = this.head;
+      let prevNode = null;
+      while (currentNode.next !== this.head) {
+        prevNode = currentNode;
+        currentNode = currentNode.next;
+      }
+      prevNode.next = this.head;
+    }
+    // console.log(this.head.value);
+    this.size--;
+  }
+
+  //   insert data at the given position
+  deleteNodeAtThePosition(pos) {
+    if (this.size === 0) {
+      return "Empty";
+    }
+    if (this.size === 1) {
+      this.head = null;
+    } else {
+      if (pos === 0) {
+        let currentNode = this.head;
+        while (currentNode.next !== this.head) {
+          currentNode = currentNode.next;
+        }
+        currentNode.next = this.head.next;
+        this.head = this.head.next;
+      } else {
+        let currentNode = this.head;
+        let i = 0;
+        let prevNode = null;
+        while (i < pos) {
+          prevNode = currentNode;
+          currentNode = currentNode.next;
+          i++;
+        }
+        prevNode.next = currentNode.next;
+      }
+    }
+    this.size--;
   }
 
   printLinkedList() {
@@ -103,5 +169,7 @@ cll.insertNodeAtBeginning(5);
 cll.insertNodeAtEnd(20);
 cll.insertNodeAtEnd(30);
 
-cll.insertNodeAtThePosition(8, 0);
+// cll.insertNodeAtThePosition(8, 0);
+// cll.deleteNodeAtBeginning();
+cll.deleteNodeAtThePosition(0);
 console.log(cll.printLinkedList());
