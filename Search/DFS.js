@@ -1,3 +1,7 @@
+// time O(V+E)
+// V --> Vertices
+// E --> Edges
+
 function dfs(graph, startNode) {
   let stack = [startNode];
   let visited = new Array(graph.length).fill(false);
@@ -5,8 +9,8 @@ function dfs(graph, startNode) {
     const currentNode = stack.pop();
 
     if (!visited[currentNode]) {
-      console.log(currentNode);
-      visited[currentNode] = true;
+      console.log(currentNode); // this give you the result
+      visited[currentNode] = true; // age pop korte hoy pore visited true korte hoy
       for (let i = graph[currentNode].length - 1; i >= 0; i--) {
         const neighbour = graph[currentNode][i];
         if (!visited[neighbour]) {
