@@ -28,3 +28,31 @@ res.push(numArr.sumRange(2,5))
 res.push(numArr.sumRange(0,5))
 console.log(res);
 
+
+
+
+// class NumArray {
+//     constructor(nums) {
+//       this.nums = nums;
+//     }
+  
+//     sumRange(left, right) {
+//       let sum = 0;
+//       for (let i = left; i <= right; i++) {
+//         sum += this.nums[i];
+//       }
+//       return sum;
+//     }
+//   }
+  
+//   const input = ["NumArray", "sumRange", "sumRange", "sumRange"];
+//   const numInput = [[[-2, 0, 3, -5, 2, -1]], [0, 2], [2, 5], [0, 5]];
+  
+//   const numArr = new NumArray(numInput[0][0]);
+//   const res = [null];
+//   res.push(numArr.sumRange(0, 2));
+//   res.push(numArr.sumRange(2, 5));
+//   res.push(numArr.sumRange(0, 5));
+  
+//   console.log(res); 
+  
